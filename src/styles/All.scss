@@ -1,0 +1,30 @@
+.all-main {
+  position: relative;
+}
+
+.all-buttons {
+  button {
+    margin: 15px 0;
+    padding: 5px 10px;
+    border: #fdc105 solid 2px;
+    border-radius: 10px;
+    background: #2a4396;
+    font-family: inherit;
+    color: #fdc105;
+    font-size: 14px;
+  }
+}
+
+.go-up {
+  position: fixed;
+  right: 15px;
+  bottom: 0px;
+  margin: 15px 0;
+  padding: 5px 10px;
+  border: #2a4396 solid 2px;
+  border-radius: 40%;
+  background: #fdc105;
+  font-family: inherit;
+  color: #2a4396;
+  font-size: 35px;
+}

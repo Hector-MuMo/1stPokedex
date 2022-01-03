@@ -1,36 +1,22 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import Img from "./Img";
-import SearchSection from "./SearchSection";
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import All from './components/All';
+import BurgerMenu from './components/BurgerMenu';
+import ByName from './components/ByName';
+import Home from './components/Home';
+import './styles/Home.css';
 
 function App() {
-  const [searchValue, setSearchValue] = useState("bulbasaur");
-  const [name, setName] = useState("");
-  const [frontImg, setFrontImg] = useState("");
-  const [backImg, setBackImg] = useState("");
-
-  useEffect(() => {
-    const getData = async () => {
-      let url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`;
-
-      let result = await fetch(url).then((result) => result.json());
-
-      setName(result.name);
-      setFrontImg(result.sprites.front_default);
-      setBackImg(result.sprites.back_default);
-      console.log(result);
-    };
-
-    getData();
-  }, [searchValue]);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>POKEDEX</h2>
-        <SearchSection searchValue={setSearchValue} />
-        <Img name={name} frontImg={frontImg} backImg={backImg} />
-      </header>
+    <div className='App'>
+      <Router>
+        <BurgerMenu />
+        <Switch>
+          <Route exact path='/' children={<Home />} />
+          <Router path='/nombre' children={<ByName />} />
+          <Router path='/todos' children={<All />} />
+        </Switch>
+      </Router>
     </div>
   );
 }
